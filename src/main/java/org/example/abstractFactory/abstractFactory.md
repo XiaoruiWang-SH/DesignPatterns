@@ -15,7 +15,7 @@ object, they are usually also abstract class.
 2. it can not define an abstract constructor
 3. it can not define a static abstract method
 
-##### What is can do?
+##### What it can do?
 1. it can define abstract and concrete method
 2. it can define a constructor
 3. it can have attributes
