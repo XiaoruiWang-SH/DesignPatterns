@@ -1,0 +1,38 @@
+@startuml
+abstract class org.example.abstractFactory.GUIFactory {
++ {static} GUIFactory factory(OSType)
++ {abstract}GUIButton newButton()
+}
+
+class org.example.abstractFactory.OSXButton {
++ void click()
+}
+
+class org.example.abstractFactory.OSXFactory {
++ GUIButton newButton()
+}
+
+class org.example.abstractFactory.WindowsFactory {
++ GUIButton newButton()
+}
+
+enum org.example.abstractFactory.OSType {
++  Windows
++  OSX
+}
+
+abstract class org.example.abstractFactory.GUIButton {
++ {abstract}void click()
+}
+
+class org.example.abstractFactory.WindowsButton {
++ void click()
+}
+
+
+
+org.example.abstractFactory.GUIButton <|-- org.example.abstractFactory.OSXButton
+org.example.abstractFactory.GUIFactory <|-- org.example.abstractFactory.OSXFactory
+org.example.abstractFactory.GUIFactory <|-- org.example.abstractFactory.WindowsFactory
+org.example.abstractFactory.GUIButton <|-- org.example.abstractFactory.WindowsButton
+@enduml
