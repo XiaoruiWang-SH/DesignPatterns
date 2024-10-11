@@ -3,6 +3,7 @@ package org.example.singleton;
 /**
  * keyword final: in case users will inherit this class
  */
+
 final public class Singleton {
     public static volatile Singleton instance = null;
 
@@ -25,3 +26,24 @@ final public class Singleton {
         System.out.println("I am a singleton");
     }
 }
+
+// public enum Singleton {
+//    INSTANCE(0);
+//
+//    private int age = 0;
+//    private Singleton(int age){
+//        this.age = age;
+//    }
+//
+//    public int age(){
+//        return age;
+//    }
+//
+//    public void printMe() {
+//        System.out.println("I am a singleton");
+//    }
+//
+//
+//}
+
+

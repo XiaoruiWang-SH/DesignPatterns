@@ -46,6 +46,11 @@ public class Main {
         Singleton s = Singleton.instance();
         s.printMe();
 
+//        Singleton s = Singleton.INSTANCE;
+//        int age = s.age();
+//        System.out.println("age is " + age);
+//        s.printMe();
+
 
     }
 }
