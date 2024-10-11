@@ -1,6 +1,8 @@
 package org.example;
 
 import org.example.abstractFactory.*;
+import org.example.builder.NFBuilder;
+import org.example.builder.NutritionFacts;
 import org.example.singleton.Singleton;
 
 public class Main {
@@ -50,6 +52,9 @@ public class Main {
 //        int age = s.age();
 //        System.out.println("age is " + age);
 //        s.printMe();
+
+        NutritionFacts facts = new NFBuilder(100).carbs(34).proteins(33).fat(33).fact();
+        facts.printMe();
 
 
     }
