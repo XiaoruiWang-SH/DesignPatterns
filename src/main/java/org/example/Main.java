@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.abstractFactory.*;
+import org.example.singleton.Singleton;
 
 public class Main {
     public static void main(String[] args) {
@@ -42,7 +43,8 @@ public class Main {
         // overloading static binding
          */
 
-
+        Singleton s = Singleton.instance();
+        s.printMe();
 
 
     }
