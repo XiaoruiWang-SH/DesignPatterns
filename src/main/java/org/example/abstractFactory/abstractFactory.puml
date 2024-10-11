@@ -1,38 +1,50 @@
 @startuml
-abstract class org.example.abstractFactory.GUIFactory {
+abstract class GUIFactory {
 + {static} GUIFactory factory(OSType)
-+ {abstract}GUIButton newButton()
++ {abstract} GUIButton newButton()
 }
 
-class org.example.abstractFactory.OSXButton {
+class OSXButton {
 + void click()
 }
 
-class org.example.abstractFactory.OSXFactory {
+class OSXFactory {
 + GUIButton newButton()
 }
 
-class org.example.abstractFactory.WindowsFactory {
+class WindowsFactory {
 + GUIButton newButton()
 }
 
-enum org.example.abstractFactory.OSType {
+enum OSType {
 +  Windows
 +  OSX
 }
 
-abstract class org.example.abstractFactory.GUIButton {
+abstract class GUIButton {
 + {abstract}void click()
 }
 
-class org.example.abstractFactory.WindowsButton {
+class WindowsButton {
 + void click()
 }
 
 
 
-org.example.abstractFactory.GUIButton <|-- org.example.abstractFactory.OSXButton
-org.example.abstractFactory.GUIFactory <|-- org.example.abstractFactory.OSXFactory
-org.example.abstractFactory.GUIFactory <|-- org.example.abstractFactory.WindowsFactory
-org.example.abstractFactory.GUIButton <|-- org.example.abstractFactory.WindowsButton
+
+GUIFactory <|-- WindowsFactory
+GUIFactory <|-- OSXFactory
+
+GUIFactory ..> OSType : <<use>>
+GUIFactory ..> WindowsFactory : <<use>>
+GUIFactory ..> OSXFactory : <<use>>
+GUIFactory ..> GUIButton : <<use>>
+
+GUIButton <|-- WindowsButton
+GUIButton <|-- OSXButton
+
+WindowsFactory ..> WindowsButton : <<use>>
+OSXFactory ..> OSXButton : <<use>>
+
+
 @enduml
