@@ -1,14 +1,16 @@
 package org.example;
 
 import org.example.abstractFactory.*;
+import org.example.adapter.FahrenheitTemperature;
+import org.example.adapter.TemperatureAdapter;
 import org.example.builder.NFBuilder;
 import org.example.builder.NutritionFacts;
 import org.example.singleton.Singleton;
 
 public class Main {
     public static void main(String[] args) {
-//        System.out.println("Hello world!");
 
+        // Abstract factory pattern
         {
             GUIFactory factory = GUIFactory.factory(OSType.Windows);
             GUIButton btn = factory.newButton();
@@ -22,29 +24,14 @@ public class Main {
         }
 
 
-
-
         /*
         NestedClass nc = new NestedClass();
         NestedClass.SubClass ns = nc.new SubClass();
         ns.testAccess();
          */
 
-        /*
-        A a = new A();
-        A b = new B();
-       // Next lines output : A or B at A : I ’m A
-        a.printSomething(a);
-// Next lines output : A or B at A : I ’m B
-        a.printSomething(b);
-// Next lines output : A at B : I ’m A
-        b.printSomething(a);
-// Next lines output : B at B : I ’m B
-        b.printSomething(b);
-        // overriding dynamic binding
-        // overloading static binding
-         */
 
+        // Singleton pattern
         Singleton s = Singleton.instance();
         s.printMe();
 
@@ -53,8 +40,20 @@ public class Main {
 //        System.out.println("age is " + age);
 //        s.printMe();
 
+        // Builder pattern
         NutritionFacts facts = new NFBuilder(100).carbs(34).proteins(33).fat(33).fact();
         facts.printMe();
+
+
+        // Adapter design pattern
+        FahrenheitTemperature f = new FahrenheitTemperature();
+        TemperatureAdapter adapter = new TemperatureAdapter(f);
+
+        adapter.setUnit("C");
+        adapter.temperature();
+
+
+
 
 
     }
