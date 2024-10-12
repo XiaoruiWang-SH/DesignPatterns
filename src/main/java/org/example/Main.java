@@ -3,6 +3,7 @@ package org.example;
 import org.example.abstractFactory.*;
 import org.example.adapter.FahrenheitTemperature;
 import org.example.adapter.TemperatureAdapter;
+import org.example.bridge.*;
 import org.example.builder.NFBuilder;
 import org.example.builder.NutritionFacts;
 import org.example.singleton.Singleton;
@@ -51,6 +52,41 @@ public class Main {
 
         adapter.setUnit("C");
         adapter.temperature();
+
+
+        // Bridge pattern
+
+        UnixSystem unixSystem = new UnixSystem();
+        JVMSystem jvmSystem = new JVMSystem();
+        OSXSystem osxSystem = new OSXSystem();
+
+        PreemptiveScheduler unixSystemPreemptive = new PreemptiveScheduler(unixSystem);
+        PreemptiveScheduler jvmSystemPreemptive = new PreemptiveScheduler(jvmSystem);
+        PreemptiveScheduler osxSystemPreemptive = new PreemptiveScheduler(osxSystem);
+
+        CooperativeScheduler unixSystemCooperative = new CooperativeScheduler(unixSystem);
+        CooperativeScheduler jvmSystemCooperative = new CooperativeScheduler(jvmSystem);
+        CooperativeScheduler osxSystemmCooperative = new CooperativeScheduler(osxSystem);
+
+        RoundrobinScheduler unixSystemRoundrobin = new RoundrobinScheduler(unixSystem);
+        RoundrobinScheduler jvmSystemRoundrobin = new RoundrobinScheduler(jvmSystem);
+        RoundrobinScheduler osxSystemRoundrobin = new RoundrobinScheduler(osxSystem);
+
+
+        Task task = new Task(1);
+        unixSystemPreemptive.run(task);
+        jvmSystemPreemptive.run(task);
+        osxSystemPreemptive.run(task);
+
+        unixSystemCooperative.run(task);
+        jvmSystemCooperative.run(task);
+        osxSystemmCooperative.run(task);
+
+        unixSystemRoundrobin.run(task);
+        jvmSystemRoundrobin.run(task);
+        osxSystemRoundrobin.run(task);
+
+
 
 
 
