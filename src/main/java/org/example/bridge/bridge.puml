@@ -1,0 +1,64 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+abstract class Scheduler {
+    # SchedulingSystem system;
+    # Scheduler(SchedulingSystem system)
+    + abstract void run(Task task);
+    + abstract void stop();
+}
+
+interface SchedulingSystem {
+    + void schedulePreemptive(Task task);
+    + void scheduleCooperative(Task task, int maxTime);
+    + void scheduleRoundrobin(Task task);
+}
+
+class CooperativeScheduler{
+    + CooperativeScheduler(SchedulingSystem system)
+    + void run(Task task)
+    + void stop()
+}
+class PreemptiveScheduler{
+    + PreemptiveScheduler(SchedulingSystem system)
+    + void run(Task task)
+    + void stop()
+}
+class RoundrobinScheduler{
+    + RoundrobinScheduler(SchedulingSystem system)
+    + void run(Task task)
+    + void stop()
+}
+class JVMSystem {
+    + void schedulePreemptive(Task task)
+    + void scheduleCooperative(Task task, int maxTime)
+    + void scheduleRoundrobin(Task task)
+}
+class OSXSystem {
+    + void schedulePreemptive(Task task)
+    + void scheduleCooperative(Task task, int maxTime)
+    + void scheduleRoundrobin(Task task)
+}
+class UnixSystem {
+    + void schedulePreemptive(Task task)
+    + void scheduleCooperative(Task task, int maxTime)
+    + void scheduleRoundrobin(Task task)
+}
+
+
+Scheduler <|-- CooperativeScheduler
+Scheduler <|-- PreemptiveScheduler
+Scheduler <|-- RoundrobinScheduler
+Scheduler --> SchedulingSystem
+JVMSystem ..|> SchedulingSystem
+OSXSystem ..|> SchedulingSystem
+UnixSystem ..|> SchedulingSystem
+
+
+
+
+
+
+
+@enduml
