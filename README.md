@@ -5,3 +5,4 @@ Illustrate design patterns with Java code and diagrams
 * [Builder](src/main/java/org/example/builder/build.md)
 * [Adapter](src/main/java/org/example/adapter/Adapter.md)
 * [Bridge](src/main/java/org/example/bridge/bridge.md)
+* [Composite](src/main/java/org/example/composite/composite.md)

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Pane extends Composite{
 
-    ArrayList<Component> components = new ArrayList<>();
+    private ArrayList<Component> components = new ArrayList<>();
 
     @Override
     public void resize() {

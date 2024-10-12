@@ -1,0 +1,46 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class Component {
+    + void resize();
+    + void draw();
+}
+
+abstract class Composite {
+    + void add(Component component);
+}
+
+class Button {
+    + void resize()
+    + void draw()
+}
+
+class Textfield {
+    + void resize()
+    + void draw()
+}
+
+class Pane{
+    - ArrayList<Component> components;
+    + void resize()
+    + void draw()
+    + void add(Component component)
+}
+
+class Window{
+    - ArrayList<Component> components;
+    + void resize()
+    + void draw()
+    + void add(Component component)
+}
+
+
+
+Component <|-- Composite
+Component <|-- Button
+Component <|-- Textfield
+Composite <|-- Pane
+Composite <|-- Window
+Component <.. Pane: <use>
+Component <.. Window: <use>
+@enduml
