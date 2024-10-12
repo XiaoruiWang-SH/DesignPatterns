@@ -1,7 +1,13 @@
 package org.example.builder;
 
 public class NFBuilder {
-    final public int calories;
+    final protected int calories;
+    /* Why this is set to protected access?
+    * First of all, because these fields don't want to be accessed by users, they are
+    * just belong to builder which is a tool, is meaningless to business. So they should not be public.
+    * If users want to access the field, they should consider accessing these through NutritionFacts class.
+    * Next, It can be set private, because it is used in class NutritionFacts. Usually, the two classes will
+    * appear together(i.e. in same package), so it should be protected access.*/
     protected int carbs;
     protected int proteins;
     protected int fat;
@@ -24,7 +30,7 @@ public class NFBuilder {
         this.fat = fat;
         return this;
     }
-
+    /* This is also called build function */
     public NutritionFacts fact() {
         return new NutritionFacts(this);
     }

@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class NFBuilder {
+~ int calories;
+~ int carbs;
+~ int proteins;
+~ int fat
+
++ NFBuilder(int calories)
++ NFBuilder carbs(int carbs)
++ NFBuilder proteins(int proteins)
++ NFBuilder fat(int fat)
++ NutritionFacts fact()
+}
+
+class NutritionFacts {
+- final int calories;
+- final int carbs;
+- final int proteins;
+- final int fat;
+
+~ NutritionFacts(NFBuilder builder)
++ void printMe()
+}
+
+NutritionFacts <.. NFBuilder: <use>
+
+
+
+
+@enduml
