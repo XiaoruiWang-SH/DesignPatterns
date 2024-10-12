@@ -6,6 +6,10 @@ import org.example.adapter.TemperatureAdapter;
 import org.example.bridge.*;
 import org.example.builder.NFBuilder;
 import org.example.builder.NutritionFacts;
+import org.example.composite.Button;
+import org.example.composite.Pane;
+import org.example.composite.Textfield;
+import org.example.composite.Window;
 import org.example.singleton.Singleton;
 
 public class Main {
@@ -55,7 +59,6 @@ public class Main {
 
 
         // Bridge pattern
-
         UnixSystem unixSystem = new UnixSystem();
         JVMSystem jvmSystem = new JVMSystem();
         OSXSystem osxSystem = new OSXSystem();
@@ -87,7 +90,21 @@ public class Main {
         osxSystemRoundrobin.run(task);
 
 
+        // Composite pattern
+        Button btn = new Button();
+        Textfield textfield = new Textfield();
 
+        Pane pane = new Pane();
+        pane.add(btn);
+        pane.add(textfield);
+
+        Button button2 = new Button();
+
+        Window window = new Window();
+        window.add(pane);
+        window.add(button2);
+        window.resize();
+        window.draw();
 
 
 
