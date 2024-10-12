@@ -4,3 +4,4 @@ Illustrate design patterns with Java code and diagrams
 * [Singleton](src/main/java/org/example/singleton/singleton.md)
 * [Builder](src/main/java/org/example/builder/build.md)
 * [Adapter](src/main/java/org/example/adapter/Adapter.md)
+* [Bridge](src/main/java/org/example/bridge/bridge.png)
