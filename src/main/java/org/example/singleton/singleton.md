@@ -1,5 +1,16 @@
 ![uml class diagram](singleton.png)
 
+### Information hiding
+Clients can
+rely on the singleton’s
+properties without knowing
+how it’s implemented.
+### Change
+If in the future multiple
+instances of a singleton class
+are allowed, clients need no
+modifications – only simplifying
+the Singleton implementation.
 
 #### Implementation of singleton:
 ##### Lazy initialization
