@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+interface Temperature{
++ double temperature();
++ void setUnit(String unit);
+}
+
+class FahrenheitTemperature {
++ double temperature()
+}
+
+class TemperatureAdapter {
+- final FahrenheitTemperature f;
+- String unit;
++ TemperatureAdapter(FahrenheitTemperature f)
++ double temperature()
++ void setUnit(String unit) {
+- double fToC(double f)
+}
+
+class WeatherForcast{}
+
+Temperature <|.. TemperatureAdapter
+TemperatureAdapter o.. FahrenheitTemperature
+TemperatureAdapter <.. WeatherForcast
+Temperature <.. WeatherForcast
+@enduml
