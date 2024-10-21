@@ -6,3 +6,9 @@ Illustrate design patterns with Java code and diagrams
 * [Adapter](src/main/java/org/example/adapter/Adapter.md)
 * [Bridge](src/main/java/org/example/bridge/bridge.md)
 * [Composite](src/main/java/org/example/composite/composite.md)
+* [Facade](src/main/java/org/example/facade/facade.md)
+* [Observer](src/main/java/org/example/observer/observer.md)
+* [Proxy](src/main/java/org/example/proxy/proxy.md)
+* [Command](src/main/java/org/example/command/command.md)
+* [Strategy](src/main/java/org/example/strategy/strategy.md)
+* 

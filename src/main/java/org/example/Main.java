@@ -6,11 +6,18 @@ import org.example.adapter.TemperatureAdapter;
 import org.example.bridge.*;
 import org.example.builder.NFBuilder;
 import org.example.builder.NutritionFacts;
+import org.example.command.CommandManager;
+import org.example.command.Document;
+import org.example.command.LineDeletion;
+import org.example.command.LineInsertion;
 import org.example.composite.Button;
 import org.example.composite.Pane;
 import org.example.composite.Textfield;
 import org.example.composite.Window;
 import org.example.singleton.Singleton;
+import org.example.strategy.*;
+
+import java.net.CookieManager;
 
 public class Main {
     public static void main(String[] args) {
@@ -105,6 +112,36 @@ public class Main {
         window.add(button2);
         window.resize();
         window.draw();
+
+        // Command
+        Document document = new Document();
+        CommandManager commandManager = new CommandManager();
+        LineInsertion lineInsertion1 = new LineInsertion(document, 1, "Hello");
+        commandManager.execute(lineInsertion1);
+        LineInsertion lineInsertion2 = new LineInsertion(document, 2, "Ray");
+        commandManager.execute(lineInsertion2);
+        LineDeletion lineDeletion2 = new LineDeletion(document, 2);
+        commandManager.execute(lineDeletion2);
+        commandManager.undo();
+
+        // Observer
+        org.example.observer.Button btn1 = new org.example.observer.Button();
+        org.example.observer.Window window1 = new org.example.observer.Window();
+        btn1.register(window1);
+        btn1.onClick();
+
+        // Strategy
+        Check table3 = new Check(new LunchPricer());
+        table3.charge(new Steak(10));
+        table3.charge(new Wine(15));
+        double table3_lunchPrice = table3.total();
+        System.out.println(String.format("table3's lunch price is %f", table3_lunchPrice));
+
+        table3.use(new DinnerPricer());
+        table3.charge(new Wine(15));
+        double table3_dinnerPrice = table3.total();
+        System.out.println(String.format("table3's dinner price is %f", table3_dinnerPrice));
+
 
 
 
