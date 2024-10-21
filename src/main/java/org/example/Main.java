@@ -16,6 +16,13 @@ import org.example.composite.Textfield;
 import org.example.composite.Window;
 import org.example.singleton.Singleton;
 import org.example.strategy.*;
+import org.example.templateMethod.Maze;
+import org.example.templateMethod.RandomExplorer;
+import org.example.templateMethod.Room;
+import org.example.templateMethod.StatefulExplorer;
+import org.example.visitor.Expression;
+import org.example.visitor.HtmlVisitor;
+import org.example.visitor.LaTexVisitor;
 
 import java.net.CookieManager;
 
@@ -142,6 +149,23 @@ public class Main {
         double table3_dinnerPrice = table3.total();
         System.out.println(String.format("table3's dinner price is %f", table3_dinnerPrice));
 
+        // Tempate Method
+        Maze maze1 = new Maze();
+        Room position1 = new Room();
+        RandomExplorer randomExplorer = new RandomExplorer(maze1, position1);
+        randomExplorer.explore();
+        Maze maze2 = new Maze();
+        Room position2 = new Room();
+        StatefulExplorer statefulExplorer = new StatefulExplorer(maze2, position2);
+        statefulExplorer.explore();
+
+        // Visitor
+        Expression epr = new Expression("3+b");
+//        HtmlVisitor htmlVisitor = new HtmlVisitor();
+        LaTexVisitor htmlVisitor = new LaTexVisitor();
+        epr.accept(htmlVisitor);
+        String htmlOutput = htmlVisitor.output();
+        System.out.println(String.format("htmlOutput is: %s", htmlOutput));
 
 
 

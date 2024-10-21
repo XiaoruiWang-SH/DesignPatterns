@@ -11,4 +11,5 @@ Illustrate design patterns with Java code and diagrams
 * [Proxy](src/main/java/org/example/proxy/proxy.md)
 * [Command](src/main/java/org/example/command/command.md)
 * [Strategy](src/main/java/org/example/strategy/strategy.md)
-* 
+* [TemplateMethod](src/main/java/org/example/templateMethod/templateMethod.md)
+* [Visitor](src/main/java/org/example/visitor/visitor.md)
